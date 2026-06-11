@@ -30,6 +30,7 @@
 {{- end }}
 {{- $allTags = $allTags | uniq | sort }}
 
+{{- $tagLabels := dict "commercial-finance" "Commercial Finance" "forecasting-modelling" "Forecasting & Modelling" "pricing-market-entry" "Pricing & Market Entry" "engineering-product-partnership" "Engineering & Product Partnership" "public-sector-policy" "Public Sector & Policy" "strategy-advisory" "Strategy & Advisory" "cx-voc" "CX & VoC" "data-and-analytics" "Data & Analytics" "governance-risk" "Governance & Risk" "team-leadership" "Team Leadership" "global-operations" "Global Operations" "banking-financial-services" "Banking & Financial Services" "start-ups-scale-ups" "Start-Ups & Scale-Ups" "telco-tech" "Telco & Tech" -}}
 {{- /* Tag filter bar */ -}}
 <div class="career-tags" style="margin: 1.5em 0; display: flex; flex-wrap: wrap; gap: 0.5em;">
   <button class="tag-btn active" data-tag="all" onclick="filterCareer('all')" style="
@@ -52,7 +53,7 @@
       cursor: pointer;
       font-size: 0.85em;
       transition: all 0.2s;
-    ">{{- $label := . | replaceRE "-" " " | title -}}{{ replace $label "Cx" "CX" | replace "Voc" "VoC" }}</button>
+    ">{{ index $tagLabels . }}</button>
   {{- end }}
 </div>
 
@@ -77,14 +78,14 @@
     {{- /* Tags as pills */ -}}
     <div style="display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.8em;">
       {{- range .Params.tags }}
-      {{- $tagLabel := . | replaceRE "-" " " | title | replace "Cx" "CX" | replace "Voc" "VoC" -}}
+      {{- index $tagLabels . -}}
       <span style="
         padding: 0.15em 0.6em;
         border-radius: 12px;
         background: var(--code-bg);
         color: var(--secondary);
         font-size: 0.75em;
-      ">{{ $tagLabel }}</span>
+      ">{{ index $tagLabels . }}</span>
       {{- end }}
     </div>
     <div class="entry-content" style="font-size: 0.92em;">
