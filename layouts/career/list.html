@@ -1,0 +1,192 @@
+{{- define "main" }}
+{{- $pages := .RegularPages.ByWeight }}
+
+{{- if .Title }}
+<header class="page-header">
+  {{- partial "breadcrumbs.html" . }}
+  <h1>{{ .Title }}</h1>
+  {{- if .Description }}
+  <div class="post-description">
+    {{ .Description | markdownify }}
+  </div>
+  {{- end }}
+</header>
+{{- end }}
+
+{{- if .Content }}
+<div class="post-content md-content">
+  {{- if not (.Param "disableAnchoredHeadings") }}
+  {{- partial "anchored_headings.html" .Content -}}
+  {{- else }}{{ .Content }}{{ end }}
+</div>
+{{- end }}
+
+{{- /* Collect all unique tags */ -}}
+{{- $allTags := slice }}
+{{- range $pages }}
+  {{- range .Params.tags }}
+    {{- $allTags = $allTags | append . }}
+  {{- end }}
+{{- end }}
+{{- $allTags = $allTags | uniq | sort }}
+
+{{- /* Tag filter bar */ -}}
+<div class="career-tags" style="margin: 1.5em 0; display: flex; flex-wrap: wrap; gap: 0.5em;">
+  <button class="tag-btn active" data-tag="all" onclick="filterCareer('all')" style="
+    padding: 0.4em 0.9em;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--entry);
+    color: var(--primary);
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.2s;
+  ">All</button>
+  {{- range $allTags }}
+  <button class="tag-btn" data-tag="{{ . }}" onclick="filterCareer('{{ . }}')" style="
+    padding: 0.4em 0.9em;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: var(--entry);
+    color: var(--secondary);
+    cursor: pointer;
+    font-size: 0.85em;
+    transition: all 0.2s;
+  ">{{ . | humanize | title }}</button>
+  {{- end }}
+</div>
+
+{{- /* Active filter display */ -}}
+<div id="active-filters" style="margin-bottom: 1em; font-size: 0.9em; color: var(--secondary); min-height: 1.5em;"></div>
+
+{{- /* Role cards */ -}}
+<div class="career-roles">
+{{- range $index, $page := $pages }}
+{{- $roleId := printf "role-%d" $index }}
+<article class="post-entry career-role" id="{{ $roleId }}" data-tags="{{ delimit .Params.tags "," }}" style="margin-bottom: 0.5em;">
+  <header class="entry-header" onclick="toggleRole('{{ $roleId }}')" style="cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <h2 style="margin: 0; font-size: 1.1em;">{{ .Title }}</h2>
+      {{- with .Params.summary }}
+      <p style="margin: 0.3em 0 0; font-size: 0.85em; color: var(--secondary);">{{ . }}</p>
+      {{- end }}
+    </div>
+    <span class="role-toggle" style="font-size: 0.8em; color: var(--secondary); white-space: nowrap; margin-left: 1em;">[+] expand</span>
+  </header>
+  <div class="role-details" style="display: none; margin-top: 1em;">
+    {{- /* Tags as pills */ -}}
+    <div style="display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.8em;">
+      {{- range .Params.tags }}
+      <span style="
+        padding: 0.15em 0.6em;
+        border-radius: 12px;
+        background: var(--code-bg);
+        color: var(--secondary);
+        font-size: 0.75em;
+      ">{{ . | humanize | title }}</span>
+      {{- end }}
+    </div>
+    <div class="entry-content" style="font-size: 0.92em;">
+      {{ .Content }}
+    </div>
+  </div>
+  {{- if not (.Param "hideMeta") }}
+  <footer class="entry-footer">
+    {{- partial "post_meta.html" . -}}
+  </footer>
+  {{- end }}
+</article>
+{{- end }}
+</div>
+
+<style>
+.career-role {
+  transition: opacity 0.3s, max-height 0.3s;
+}
+.career-role.filtered-out {
+  display: none !important;
+}
+.tag-btn.active {
+  background: var(--primary) !important;
+  color: var(--theme) !important;
+  border-color: var(--primary) !important;
+}
+.role-details ul {
+  padding-left: 1.2em;
+}
+.role-details li {
+  margin-bottom: 0.3em;
+}
+</style>
+
+<script>
+// State
+var activeTags = [];
+
+function toggleRole(id) {
+  var details = document.getElementById(id).querySelector('.role-details');
+  var toggle = document.getElementById(id).querySelector('.role-toggle');
+  if (details.style.display === 'none' || details.style.display === '') {
+    details.style.display = 'block';
+    toggle.textContent = '[-] collapse';
+  } else {
+    details.style.display = 'none';
+    toggle.textContent = '[+] expand';
+  }
+}
+
+function filterCareer(tag) {
+  var btn = document.querySelector('.tag-btn[data-tag="' + tag + '"]');
+  if (tag === 'all') {
+    // Reset all
+    activeTags = [];
+    document.querySelectorAll('.tag-btn').forEach(function(b) {
+      b.classList.remove('active');
+      if (b.dataset.tag === 'all') b.classList.add('active');
+    });
+    document.querySelectorAll('.career-role').forEach(function(r) {
+      r.classList.remove('filtered-out');
+    });
+    document.getElementById('active-filters').textContent = 'Showing all roles';
+    return;
+  }
+
+  // Remove 'all' active state
+  document.querySelector('.tag-btn[data-tag="all"]').classList.remove('active');
+
+  // Toggle this tag
+  var idx = activeTags.indexOf(tag);
+  if (idx > -1) {
+    activeTags.splice(idx, 1);
+    btn.classList.remove('active');
+  } else {
+    activeTags.push(tag);
+    btn.classList.add('active');
+  }
+
+  // Apply filter
+  if (activeTags.length === 0) {
+    document.querySelectorAll('.career-role').forEach(function(r) {
+      r.classList.remove('filtered-out');
+    });
+    document.querySelector('.tag-btn[data-tag="all"]').classList.add('active');
+    document.getElementById('active-filters').textContent = 'Showing all roles';
+    return;
+  }
+
+  document.querySelectorAll('.career-role').forEach(function(r) {
+    var roleTags = (r.dataset.tags || '').split(',');
+    var matches = activeTags.some(function(t) { return roleTags.indexOf(t) > -1; });
+    if (matches) {
+      r.classList.remove('filtered-out');
+    } else {
+      r.classList.add('filtered-out');
+    }
+  });
+
+  var filterText = 'Showing roles tagged: ' + activeTags.join(', ');
+  document.getElementById('active-filters').textContent = filterText;
+}
+</script>
+
+{{- end }}

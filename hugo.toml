@@ -1,0 +1,53 @@
+baseURL = 'https://ptchev.github.io/'
+locale = 'en-us'
+title = 'Nigel Green | Strategic Finance & Business Architecture'
+theme = 'PaperMod'
+
+[menu]
+  [[menu.main]]
+    identifier = "career"
+    name = "Career"
+    url = "/career/"
+    weight = 5
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/cv/"
+    weight = 10
+  [[menu.main]]
+    identifier = "projects"
+    name = "Projects"
+    url = "/projects/"
+    weight = 20
+  [[menu.main]]
+    identifier = "blog"
+    name = "Blog"
+    url = "/posts/"
+    weight = 30
+
+[params]
+  env = 'production'
+  description = 'Portfolio, Projects, and Writing'
+  author = 'Nigel Green'
+  # PaperMod specific settings
+  defaultTheme = 'auto'
+  ShowReadingTime = true
+  ShowShareButtons = true
+  
+  [params.profileMode]
+    enabled = true
+    title = "Nigel Green"
+    subtitle = "Strategic Finance | Business Architect | Forecaster"
+    imageUrl = ""
+    imageWidth = 120
+    imageHeight = 120
+    
+    [[params.profileMode.buttons]]
+      name = "View CV"
+      url = "/cv"
+    [[params.profileMode.buttons]]
+      name = "Projects"
+      url = "/projects"
+    [[params.profileMode.buttons]]
+      name = "Blog"
+      url = "/posts"
