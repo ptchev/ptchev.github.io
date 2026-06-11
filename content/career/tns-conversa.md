@@ -1,7 +1,7 @@
 ---
 title: "TNS / Conversa Global — Director"
 date: 2003-12-01
-tags: ["market-research", "forecasting", "pricing", "telco", "fmcg", "market-entry", "emerging-markets", "valuation", "client-relationships", "executive-reporting", "asia", "africa"]
+tags: ["forecasting-modelling", "pricing-market-entry", "telco-tech", "global-operations", "strategy-advisory"]
 weight: 5
 summary: "10+ years spanning management consultancy and market research across 80+ countries. Built models for Nigeria's largest telco, Vietnam's cement champion, and global wine brands."
 ---

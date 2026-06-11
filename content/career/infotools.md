@@ -1,7 +1,7 @@
 ---
 title: "Infotools — Financial Accountant"
 date: 2023-01-01
-tags: ["erp", "global-operations", "acquisition-integration", "product-development", "software-saas", "driver-analysis", "bi-tools"]
+tags: ["commercial-finance", "data-bi", "global-operations", "engineering-product-partnership"]
 weight: 1
 summary: "ERP modernisation, global billing (UK/US), acquisition integration, and design of a driver analysis tool that won back the largest client."
 ---

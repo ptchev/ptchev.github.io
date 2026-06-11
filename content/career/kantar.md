@@ -1,7 +1,7 @@
 ---
 title: "Kantar — Executive Director"
 date: 2016-05-01
-tags: ["cx", "pricing", "forecasting", "thought-leadership", "team-leadership", "advisory", "training", "banking", "fintech", "voice-of-customer", "start-up-forecasting"]
+tags: ["cx-voc", "pricing-market-entry", "forecasting-modelling", "strategy-advisory", "team-leadership", "banking-financial-services", "start-ups-scale-ups"]
 weight: 3
 summary: "Led CX domain for Kantar NZ. Advised banks on pricing strategy, built forecasts for FinTech and start-ups, won VoC programmes, and trained teams across NZ and SE Asia."
 ---

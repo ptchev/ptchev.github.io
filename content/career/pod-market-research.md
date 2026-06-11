@@ -1,7 +1,7 @@
 ---
 title: "POD Market Research — Partner"
 date: 2014-05-01
-tags: ["pricing", "conjoint", "market-entry", "eu-markets", "start-up", "business-transformation", "fmcg"]
+tags: ["pricing-market-entry", "strategy-advisory", "start-ups-scale-ups"]
 weight: 4
 summary: "Built the UK office of a start-up consultancy. Led conjoint pricing across 7 EU markets and a professional services transformation project."
 ---

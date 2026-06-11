@@ -1,7 +1,7 @@
 ---
 title: "Carter Holt Harvey — Strategy Analyst"
 date: 2001-12-01
-tags: ["strategy", "valuation", "forecasting", "forestry", "engineering-partnership", "investment-analysis", "commodity-modelling"]
+tags: ["forecasting-modelling", "engineering-product-partnership", "commercial-finance", "strategy-advisory"]
 weight: 6
 summary: "Convinced management to cut forest harvesting by a third for long-term value. Built Asia-Pacific log price forecasting models for NZ's largest forest owner."
 ---

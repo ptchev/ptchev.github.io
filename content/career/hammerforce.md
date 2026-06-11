@@ -1,7 +1,7 @@
 ---
 title: "Hammerforce — CFO"
 date: 2021-02-01
-tags: ["cfo", "capital-markets", "valuation", "board-reporting", "engineering-partnership", "product-development", "ip-licensing", "governance", "capital-raise"]
+tags: ["commercial-finance", "engineering-product-partnership", "governance-risk", "strategy-advisory", "start-ups-scale-ups"]
 weight: 2
 summary: "Built the valuation model for a ~$10M capital raise, overhauled reporting, and partnered with engineers to commercialise IP in a scaling engineering business."
 ---

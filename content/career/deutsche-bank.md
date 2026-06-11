@@ -1,7 +1,7 @@
 ---
 title: "Deutsche Bank — Financial Controller (AVP)"
 date: 1998-09-01
-tags: ["financial-control", "banking", "global-operations", "risk-management", "process-improvement", "investment-banking"]
+tags: ["commercial-finance", "banking-financial-services", "global-operations", "governance-risk"]
 weight: 7
 summary: "Diagnosed and eliminated ~£3M annual reporting errors across a £120B custody portfolio. Built financial control framework for UK Custody Services."
 ---

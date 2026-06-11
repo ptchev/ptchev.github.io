@@ -1,7 +1,7 @@
 ---
 title: "The Treasury (NZ) — Senior Analyst"
 date: 1994-01-01
-tags: ["public-sector", "policy", "fiscal-policy", "forecasting", "health", "social-insurance", "economic-modelling", "government-advisory", "macro-forecasting"]
+tags: ["public-sector-policy", "forecasting-modelling", "strategy-advisory"]
 weight: 8
 summary: "Advised the Minister of Finance on $400M+ health spending. Drove the recognition of ACC's $7B+ unfunded liabilities. Authored the official Economic Forecast chapter."
 ---
