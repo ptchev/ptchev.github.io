@@ -52,7 +52,7 @@
       cursor: pointer;
       font-size: 0.85em;
       transition: all 0.2s;
-    ">{{- $label := . | replaceRE "-" " " | title -}}{{ replace $label "Cx" "CX" | replace "Voc" "VoC" | replace "Bi" "BI" }}</button>
+    ">{{- $label := . | replaceRE "-" " " | title -}}{{ replace $label "Cx" "CX" | replace "Voc" "VoC" }}</button>
   {{- end }}
 </div>
 
@@ -77,7 +77,7 @@
     {{- /* Tags as pills */ -}}
     <div style="display: flex; flex-wrap: wrap; gap: 0.3em; margin-bottom: 0.8em;">
       {{- range .Params.tags }}
-      {{- $tagLabel := . | replaceRE "-" " " | title | replace "Cx" "CX" | replace "Voc" "VoC" | replace "Bi" "BI" -}}
+      {{- $tagLabel := . | replaceRE "-" " " | title | replace "Cx" "CX" | replace "Voc" "VoC" -}}
       <span style="
         padding: 0.15em 0.6em;
         border-radius: 12px;
